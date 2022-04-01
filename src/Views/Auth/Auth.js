@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { signInUser } from '../../services/auth';
+import { signInUser, signUpUser } from '../../services/auth';
 
 export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');
@@ -12,9 +12,10 @@ export default function Auth({ setCurrentUser }) {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
+
     try {
-      const resp = await signInUser(email, password);
-      setCurrentUser(resp.email);
+      const data = await signInUser(email, password);
+      setCurrentUser(data.email);
       history.push('/');
     } catch (e) {
       console.log(e);
