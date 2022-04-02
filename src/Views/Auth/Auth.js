@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { signInUser, signUpUser } from '../../services/auth';
+import { signInUser } from '../../services/auth';
 
 export default function Auth({ setCurrentUser }) {
   const [email, setEmail] = useState('');
@@ -18,7 +18,6 @@ export default function Auth({ setCurrentUser }) {
       setCurrentUser(data.email);
       history.push('/');
     } catch (e) {
-      console.log(e);
       setError(e.message);
     }
   };

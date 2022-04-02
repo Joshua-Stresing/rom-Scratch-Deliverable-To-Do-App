@@ -1,6 +1,7 @@
+import './Todos.css';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { fetchTodos, addTodo } from '../../services/fetchtodos';
+import { fetchTodos, addTodo, toggleComplete } from '../../services/fetchtodos';
 
 
 export default function Todos() {
@@ -10,6 +11,7 @@ export default function Todos() {
   const history = useHistory();
 
   useEffect(() => {
+
     const fetchData = async () => {
       try {
         const data = await fetchTodos();
@@ -22,8 +24,17 @@ export default function Todos() {
     fetchData();
   }, []);
 
-  const handleSubmit = async () => {
-    
+  const handleClick = async (data) => {
+    try {
+      await toggleComplete(data);
+    } catch (e) {
+      setError('Ya broke it dummy.Click Testing');  
+    }
+  };
+
+//   setTodos((prevState) => ([…prevState, newTodo])
+
+  const handleSubmit = async () => { 
     try {
       await addTodo({ todo:makeTodo, complete:false });
       history.go(0);
@@ -47,10 +58,9 @@ export default function Todos() {
 
       { todo.map((todo) => (
         <div className='TodoList' key={todo.id}>
-          <p>{todo.todo}</p>
+          <p className={todo.complete ? 'completed' : 'incomplete'} onClick={()=>handleClick(todo)}>{todo.todo}</p>
         </div>
       ))}
-
     </div>
 
   );

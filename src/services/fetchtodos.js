@@ -10,8 +10,7 @@ export async function addTodo(todo) {
   return checkError(data);
 }
 
-//{todo: "userinput", completed: false}
-
-// export async function toggleComplete() {
-
-// }
+export async function toggleComplete(todo){
+  const data = await client.from('todos').update({ complete:true }).match({ id:todo.id }).single();
+  return checkError(data);
+}
