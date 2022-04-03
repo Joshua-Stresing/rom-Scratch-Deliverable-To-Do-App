@@ -1,6 +1,6 @@
 import './Todos.css';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { fetchTodos, addTodo, toggleComplete } from '../../services/fetchtodos';
 
 
@@ -8,7 +8,7 @@ export default function Todos() {
   const [todo, setTodos] = useState([]);
   const [makeTodo, setMakeTodo] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
+//   const history = useHistory();
 
   useEffect(() => {
 
