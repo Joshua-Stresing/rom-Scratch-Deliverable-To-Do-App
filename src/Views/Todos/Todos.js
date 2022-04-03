@@ -35,9 +35,10 @@ export default function Todos() {
 //   setTodos((prevState) => ([…prevState, newTodo])
 
   const handleSubmit = async () => { 
-    try {
-      await addTodo({ todo:makeTodo, complete:false });
-      history.go(0);
+      
+    try {  
+      const submit = await addTodo({ todo:makeTodo, complete:false });
+      setTodos((prevState) => [...prevState, submit]);
     } catch (e) {
       setError('Ya broke it dummy.');  
     }
