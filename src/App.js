@@ -18,7 +18,7 @@ function App() {
             {currentUser ? <Todos /> : <Redirect to = "/auth"/>}
           </Route>
           <Route exact path = "/auth">
-            <Auth setCurrentUser={setCurrentUser}/>
+            {!currentUser ? <Auth setCurrentUser={setCurrentUser}/> : <Redirect to = "/"/>}
           </Route>
         </Switch>
       </BrowserRouter>

@@ -24,6 +24,10 @@ export default function Todos() {
     fetchData();
   }, []);
 
+//   const updateDog = (field, value) => {
+//     setDog((prevState) => ({ ...prevState, [field]: value }));
+//   }; reference
+
   const handleClick = async (data) => {
     try {
       await toggleComplete(data);
