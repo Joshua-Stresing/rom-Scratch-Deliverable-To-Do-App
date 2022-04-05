@@ -10,7 +10,7 @@ export default function Auth({ setCurrentUser }) {
 
   const history = useHistory();
 
-  const [signInUp, setSignInUp] = useState('');
+  const [signInUp, setSignInUp] = useState('Sign-In');
 
   const handleSubmit = async (e) => {
 
